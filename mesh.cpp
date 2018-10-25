@@ -130,27 +130,8 @@ const scalarFieldMesh::fieldType scalarFieldMesh::eval(const vec3 &p) const {
 			minDistance = thisDistance;
 		
 		intersection++;
-
-																			   ///if (minDistance > 0) {
-		///	printf("----------------------\n");
-		///	printf("p  %.3f\t%.3f\t%.3f\n", p.x, p.y, p.z);
-		///	printf("N  %.3f\t%.3f\t%.3f\n", n.x, n.y, n.z);
-		///	printf("v0 %.3f\t%.3f\t%.3f\n", v0.x, v0.y, v0.z);
-		///	printf("v1 %.3f\t%.3f\t%.3f\n", v1.x, v1.y, v1.z);
-		///	printf("v2 %.3f\t%.3f\t%.3f\n", v2.x, v2.y, v2.z);
-		///} 
-
 	}	// end of the vertex-loop
-
-	//if (minDistance > 0) {
-	//	printf("----------------------\n");
-	//	printf("p  %.3f\t%.3f\t%.3f\n", p.x, p.y, p.z);
-	//	printf("C  %.3f\t%.3f\t%.3f\n", closestPoint.x, closestPoint.y, closestPoint.z);
-	//	printf("D  %.3f\n", minDistance);
-	//} 
-
-	//if (minDistance > 0 && intersection < 3) return -1;
-	// returns distance to the closest point
+	
 	return minDistance;
 };
 
