@@ -18,14 +18,6 @@
 #define TEMP_DLS	0.05
 #define TEMP_K		5		// ** This one is critical
 
-// pyroclastic spheres [1min]
-//#define TEMP_DS	0.1
-//#define TEMP_DLS	0.1
-//#define TEMP_K	1		// ** This one is critical
-//#define TEMP_DS	0.0075
-//#define TEMP_DLS	0.04
-//#define TEMP_K	3		// ** This one is critical
-
 // constructors
 render::render() {};
 render::render(int imgX, int imgY) : Nx(imgX), Ny(imgY) { init(); };
