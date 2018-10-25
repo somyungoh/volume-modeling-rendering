@@ -8,12 +8,6 @@
 *		2018 Spring, Texas A&M University
 *		Instructor - Dr.Jerry Tessendorf
 *
-*		*For MSVC project settings,
-*		 do C/C++ > Preprocessor > Preprocessor definitions
-*		 Add:
-*		 _CRT_SECURE_NO_WARNINGS - for safe stdlib issues
-*		 NDEBUG					 - for strange freeglut error
-*
 ****************************************************************/
 
 #include <iostream>
@@ -24,7 +18,7 @@
 #include "OpenEXR\ImfRgbaFile.h"
 
 //******************************//
-//		Gloabal Constants		//
+//	Gloabal Constants	//
 //******************************//
 
 // image size
@@ -33,7 +27,7 @@
 
 render	renderer;
 float*	pixmap;
-int		frameCount;
+int	frameCount;
 bool	isRendering;
 
 std::ofstream ofs;		// parameter output
@@ -45,20 +39,8 @@ float inc_freq = 7.f / 8;	// f/10
 float inc_fjmp = 0.5f / 5;	// f/5
 float inc_clump = 8 / 7.2;	// f/11
 
-// NOISE
-//float inc_octave = 4.f / 23;	// f/500
-//float inc_freq = 7.f / 8;	// f/10
-//float inc_fjmp = 0.5f / 5;	// f/5
-//float inc_fall = 8 / 7.2;	// f/11
-
-// PYROSPHERES
-//float inc_octave = 4.f / 500;	// f/500
-//float inc_freq	 = 7.f / 10;	// f/10
-//float inc_fjmp	 = 0.5f / 5;	// f/5
-//float inc_gam	 = 1.f / 11;	// f/11
-
 //******************************//
-//		save - openEXR			//
+//	save - openEXR		//
 //******************************//
 void saveEXR() {
 
@@ -102,7 +84,7 @@ void saveEXR() {
 
 
 //******************************//
-//		GLUT Routine			//
+//	GLUT Routine		//
 //******************************//
 
 // idle func
@@ -126,8 +108,6 @@ void keyboard(unsigned char key, int x, int y)
 	default:
 		break;
 	}
-
-	//glutPostRedisplay();		// redraw
 }
 
 
@@ -182,9 +162,6 @@ void display() {
 
 	if (isRendering) {
 		saveEXR();
-
-		// update parameters
-		//renderer.rotate(3.f);
 		
 		// NOISE
 		if (frameCount % 11 == 0) param.octaves = inc_octave + param.octaves;
@@ -193,13 +170,6 @@ void display() {
 		if (frameCount % 22 == 0)  param.fjump = std::fmod(param.fjump + inc_fjmp, 3.5);
 		param.clump = param.clump * inc_clump;
 		if (frameCount % 11 == 0) param.clump = 0;
-
-		// PYROSPHERE
-		//if (frameCount % 22 == 0) param.octaves = inc_octave + param.octaves;
-		//if(frameCount % 11 == 0)  param.frequency = std::fmod(param.frequency + inc_freq, 8) + 1;
-		//if(frameCount % 33 == 0)  param.fjump	  = std::fmod(param.fjump + inc_fjmp, 2.5) + 2;	
-		//param.gamma		= param.gamma - inc_gam;
-		//if (param.gamma < 0.5) param.gamma = 1.5;
 
 		renderer.setNoiseParameters(param);
 
@@ -237,12 +207,6 @@ void init() {
 	param.frequency = 0;
 	param.fjump		= 0;
 	param.clump		= 0;
-	
-	//param.roughness = 0.5;
-	//param.amplitude = 1.0;
-	//param.clump		= 1;
-	//param.falloff	= 1;
-	//renderer.setNoiseParameters(param);
 
 	printUsage();
 }
