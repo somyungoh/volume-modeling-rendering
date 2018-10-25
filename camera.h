@@ -33,10 +33,10 @@ public:
 
 private:
 	// member variables
-	vec3  origin;			// camera positions
+	vec3  origin;		// camera positions
 	vec3  view, up, right;	// camera coordinates
-	float fov;				// field of view
-	float aspectRatio;		// horizontal/vertical
+	float fov;		// field of view
+	float aspectRatio;	// horizontal/vertical
 
 };
 
