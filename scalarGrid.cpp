@@ -30,11 +30,10 @@ void scalarGridLevelSet::generate(fieldScalarPtr sdf, std::string fname) {
 			for (int i = 0; i < subdivX; i++) {
 
 				const vec3  xp = getWorldPositionAt(i, j, k);	// world position of g(i,j,k)
-				const float sd = sdf->eval(xp);					// signed distance
+				const float sd = sdf->eval(xp);			// signed distance
 				set(i, j, k, sd);
 			}
 		}
-//		printf("levelSet::Generate %.2f percent done.\n", ((float)k / subdivZ) * 100);
 	}
 	write("Grid/LevelSet/lset_" + fname + std::string(".txt"));
 	printf("levelSet::File Saved - %s\n", fname);
@@ -65,17 +64,17 @@ void scalarGridDSM::generate(fieldScalarPtr sf, const std::vector<light*> &light
 
 					// run marching
 					// initialize
-					float sl = glm::length(lights.at(l)->Origin() - gridP);	// distance between light - point
+					float sl = glm::length(lights.at(l)->Origin() - gridP);		// distance between light - point
 					vec3  nl = glm::normalize(lights.at(l)->Origin() - gridP);	// normal to light - point
-					vec3  xls = gridP + ds * nl;						// position by current ds
-					float M = sl / ds;									// total number of steps
-					float DSM = 0.0f;									// deep shadow map (DSM)
+					vec3  xls = gridP + ds * nl;					// position by current ds
+					float M = sl / ds;						// total number of steps
+					float DSM = 0.0f;						// deep shadow map (DSM)
 																		// march through the steps
 					for (int i = 0; i < M; i++) {
 						// check all objects
 						float density = sf->eval(xls);
 						density = density < 0 ? 0 : density;	// masking
-						DSM += density * ds;					// update DSM
+						DSM += density * ds;			// update DSM
 						xls += nl * ds;
 						
 					}
@@ -83,7 +82,6 @@ void scalarGridDSM::generate(fieldScalarPtr sf, const std::vector<light*> &light
 					set(i, j, k, DSM);
 				}
 			}
-//			printf("DSM::Generate %.2f percent done.\n", ((float)k / subdivZ) * 100);
 		}
 		write("Grids/DSM/dsm_" + fname + std::to_string(l) + std::string(".txt"));
 		printf("DSM::File Saved - %s\n", fname);
