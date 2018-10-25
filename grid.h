@@ -32,98 +32,23 @@ public:
 	
 	typedef T gridType;
 	
-	const vec3	  LLC, URC;						// Lower-Left-Corner, Upper-Right-Corner(+Z dir)
-	const int	  subdivX, subdivY, subdivZ;	// subdivision (x,y,z)
-	const float	  dx, dy, dz;
-	gridType	  *data;
+	const vec3	LLC, URC;			// Lower-Left-Corner, Upper-Right-Corner(+Z dir)
+	const int	subdivX, subdivY, subdivZ;	// subdivision (x,y,z)
+	const float	dx, dy, dz;
+	gridType	*data;
 
 	// file I/O
 	void read(std::string filename);
 	void write(std::string filename);	// this is usually called by generate()
 	
 	// helper methods
-	const float  trilinearInterpolate(const vec3 &p)			const;
-	const vec3   getWorldPositionAt(int i, int j, int k)		const; 	// computes world position at grid point g(ijk)
-	void		 set(int i, int j, int k, const gridType &val)	const;	// set grid value at input position
-	void		 set(const vec3 &p, const gridType &val)		const;
-	void		 add(int i, int j, int k, const gridType &val)  const;
-	void		 initGrid();
-	virtual void generate() {};
-
-
-	//bool checkBoundingBox(const vec3 &origin, const vec3 &dir) {  // bounding box check (AABB)
-	//	
-	//	// constants
-	//	const int RIGHT = 0;
-	//	const int LEFT = 1;
-	//	const int MIDDLE = 2;
-	//
-	//	// reset variables
-	//	const double minB[3]	= { LLC.x, LLC.y, LLC.z };		// box
-	//	const double maxB[3]	= { URC.x, URC.y, URC.z };
-	//	const double origin[3]  = { origin.x, origin.y, origin.z };							// ray
-	//	const double dir[3]		= { dir.x, dir.y, dir.z };
-	//	const double hit[3];								// hit point
-	//
-	//	bool inside = true;
-	//	char quadrant[3];
-	//	int whichPlane;
-	//	char maxT[3];
-	//	double candidatePlane[3];
-	//
-	//	/* Find candidate planes; this loop can be avoided if
-	//	rays cast all from the eye(assume perpsective view) */
-	//	for (int i = 0; i < 3; i++) {
-	//		if (origin[i] < minB[i]) {
-	//			quadrant[i] = LEFT;
-	//			candidatePlane[i] = minB[i];
-	//			inside = false;
-	//		}
-	//		else if (origin[i] > maxB[i]) {
-	//			quadrant[i] = RIGHT;
-	//			candidatePlane[i] = maxB[i];
-	//			inside = false;
-	//		}
-	//		else {
-	//			quadrant[i] = MIDDLE;
-	//		}
-	//	}
-	//
-	//	/* Ray origin inside bounding box */
-	//	if (inside) {
-	//		coord = origin;
-	//		return true;
-	//	}
-	//
-	//	/* Calculate T distances to candidate planes */
-	//	for (int i = 0; i < 3; i++) {
-	//		if (quadrant[i] != MIDDLE && dir[i] != 0.)
-	//			maxT[i] = (candidatePlane[i] - origin[i]) / dir[i];
-	//		else
-	//			maxT[i] = -1.f;
-	//	}
-	//
-	//	/* Get largest of the maxT's for final choice of intersection */
-	//	whichPlane = 0;
-	//	for (int i = 1; i < 3; i++) {
-	//		if (maxT[whichPlane] < maxT[i])
-	//			whichPlane = i;
-	//	}
-	//
-	//	/* Check final candidate actually inside box */
-	//	if (maxT[whichPlane] < 0.) return false;
-	//	for (int i = 0; i < 3; i++) {
-	//		if (whichPlane != i) {
-	//			coord[i] = origin[i] + maxT[whichPlane] * dir[i];
-	//			if (coord[i] < minB[i] || coord[i] > maxB[i])
-	//				return false;
-	//		}
-	//		else {
-	//			coord[i] = candidatePlane[i];
-	//		}
-	//	}
-	//	return true;				/* ray hits box */
-	//}; 	
+	const float  trilinearInterpolate(const vec3 &p)		const;
+	const vec3 	getWorldPositionAt(int i, int j, int k)		const; 	// computes world position at grid point g(ijk)
+	void		set(int i, int j, int k, const gridType &val)	const;	// set grid value at input position
+	void		set(const vec3 &p, const gridType &val)		const;
+	void		add(int i, int j, int k, const gridType &val)	const;
+	void		initGrid();
+	virtual void 	generate() {};
 };
 
 
