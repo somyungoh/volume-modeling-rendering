@@ -21,7 +21,7 @@
 typedef glm::vec2	vec2;
 typedef glm::vec3	vec3;
 typedef glm::vec4	color;
-typedef glm::mat3x3 mat3;
+typedef glm::mat3x3 	mat3;
 
 // pauliMatrix for rotation matrix
 const static mat3 pauliMatrix[3] = {
