@@ -13,10 +13,10 @@
 scalarFieldSphere::scalarFieldSphere()  {};
 scalarFieldSphere::scalarFieldSphere(const vec3 &c, float r) : center(c), radius(r) {};
 scalarFieldSphere::~scalarFieldSphere() {};
-vec3  scalarFieldSphere::Center() const				{ return center; };
-float scalarFieldSphere::Radius() const				{ return radius; };
+vec3  scalarFieldSphere::Center() const			{ return center; };
+float scalarFieldSphere::Radius() const			{ return radius; };
 void  scalarFieldSphere::setCenter(const vec3 &c)	{ center = c; };
-void  scalarFieldSphere::setRadius(float r)			{ radius = r; };
+void  scalarFieldSphere::setRadius(float r)		{ radius = r; };
 const scalarFieldSphere::fieldType scalarFieldSphere::eval(const vec3 &p) const { return (radius - glm::length(p - center)); };				// float
 const scalarFieldSphere::gradType  scalarFieldSphere::grad(const vec3 &p) const { return -1.f * (p - center) / glm::length(p - center); };	// vector
 
@@ -25,12 +25,12 @@ const scalarFieldSphere::gradType  scalarFieldSphere::grad(const vec3 &p) const 
 scalarFieldEllipse::scalarFieldEllipse()  {};
 scalarFieldEllipse::scalarFieldEllipse(const vec3 &c, const vec3 &s, float rMj, float rMn) : center(c), stretch(s), radiusMj(rMj), radiusMn(rMn) { };
 scalarFieldEllipse::~scalarFieldEllipse() {};
-vec3  scalarFieldEllipse::Center()  const			{ return center; };
-vec3  scalarFieldEllipse::Stretch()  const			{ return stretch; };
-float scalarFieldEllipse::Radius1() const			{ return radiusMj; };
-float scalarFieldEllipse::Radius2() const			{ return radiusMn; };
-void  scalarFieldEllipse::setCenter (const vec3 &c) { center = c; };
-void  scalarFieldEllipse::setStretch(const vec3 &n) { stretch = n; };
+vec3  scalarFieldEllipse::Center()  const		{ return center; };
+vec3  scalarFieldEllipse::Stretch()  const		{ return stretch; };
+float scalarFieldEllipse::Radius1() const		{ return radiusMj; };
+float scalarFieldEllipse::Radius2() const		{ return radiusMn; };
+void  scalarFieldEllipse::setCenter (const vec3 &c) 	{ center = c; };
+void  scalarFieldEllipse::setStretch(const vec3 &n) 	{ stretch = n; };
 void  scalarFieldEllipse::setRadiusMj(float r1)		{ radiusMj = r1; };
 void  scalarFieldEllipse::setRadiusMn(float r2)		{ radiusMn = r2; };
 const scalarFieldEllipse::fieldType scalarFieldEllipse::eval(const vec3 &p) const {
@@ -46,10 +46,10 @@ const scalarFieldEllipse::fieldType scalarFieldEllipse::eval(const vec3 &p) cons
 scalarFieldTorus::scalarFieldTorus() {};
 scalarFieldTorus::scalarFieldTorus(const vec3 &c, const vec3 &n, float r1, float r2) : center(c), normal(n), radius1(r1), radius2(r2) {};
 scalarFieldTorus::~scalarFieldTorus() {};
-vec3  scalarFieldTorus::Center()  const				{ return center; };
-vec3  scalarFieldTorus::Normal()  const				{ return normal; };
-float scalarFieldTorus::Radius1() const				{ return radius1; };
-float scalarFieldTorus::Radius2() const				{ return radius2; };
+vec3  scalarFieldTorus::Center()  const			{ return center; };
+vec3  scalarFieldTorus::Normal()  const			{ return normal; };
+float scalarFieldTorus::Radius1() const			{ return radius1; };
+float scalarFieldTorus::Radius2() const			{ return radius2; };
 void  scalarFieldTorus::setCenter(const vec3 &c)	{ center = c; };
 void  scalarFieldTorus::setNormal(const vec3 &n)	{ normal = n; };
 void  scalarFieldTorus::setRadius1(float r1)		{ radius1 = r1; };
@@ -66,12 +66,12 @@ const scalarFieldTorus::fieldType scalarFieldTorus::eval(const vec3 &p) const {
 scalarFieldBox::scalarFieldBox()  {};
 scalarFieldBox::scalarFieldBox(const vec3 &c, float r, float e) : center(c), radius(r), exp(e) {};
 scalarFieldBox::~scalarFieldBox() {};
-vec3  scalarFieldBox::Center()  const			{ return center; };
-float scalarFieldBox::Radius()  const			{ return radius; };
-float scalarFieldBox::Exp()		const			{ return exp;    };
+vec3  scalarFieldBox::Center()  const		{ return center; };
+float scalarFieldBox::Radius()  const		{ return radius; };
+float scalarFieldBox::Exp()		const	{ return exp;    };
 void  scalarFieldBox::setCenter(const vec3 &c)	{ center = c; };
-void  scalarFieldBox::setRadius(float r)		{ radius = r; };
-void  scalarFieldBox::setExp(float e)			{ exp	 = e; };
+void  scalarFieldBox::setRadius(float r)	{ radius = r; };
+void  scalarFieldBox::setExp(float e)		{ exp	 = e; };
 const scalarFieldBox::fieldType scalarFieldBox::eval(const vec3 &p) const {
 
 	vec3 x = p - center;
@@ -83,8 +83,8 @@ const scalarFieldBox::fieldType scalarFieldBox::eval(const vec3 &p) const {
 scalarFieldPlane::scalarFieldPlane() {};
 scalarFieldPlane::scalarFieldPlane(const vec3 &c, const vec3 &n) : center(c), normal(n) {};
 scalarFieldPlane::~scalarFieldPlane() {};
-vec3  scalarFieldPlane::Center()  const			 { return center; };
-vec3  scalarFieldPlane::Normal()  const			 { return normal; };
+vec3  scalarFieldPlane::Center()  const		 { return center; };
+vec3  scalarFieldPlane::Normal()  const		 { return normal; };
 void  scalarFieldPlane::setCenter(const vec3 &c) { center = c; };
 void  scalarFieldPlane::setNormal(const vec3 &n) { normal = n; };
 const scalarFieldPlane::fieldType scalarFieldPlane::eval(const vec3 &p) const {
@@ -99,14 +99,14 @@ const scalarFieldPlane::fieldType scalarFieldPlane::eval(const vec3 &p) const {
 scalarFieldCone::scalarFieldCone() {};
 scalarFieldCone::scalarFieldCone(const vec3 &c, const vec3 &n, float h, float a) : center(c), normal(n), height(h), angle(a) {};
 scalarFieldCone::~scalarFieldCone() {};
-vec3  scalarFieldCone::Center()  const			{ return center; };
-vec3  scalarFieldCone::Normal()  const			{ return normal; };
-float scalarFieldCone::Height()  const			{ return height; };
-float scalarFieldCone::Angle()   const			{ return angle;  };
+vec3  scalarFieldCone::Center()  const		{ return center; };
+vec3  scalarFieldCone::Normal()  const		{ return normal; };
+float scalarFieldCone::Height()  const		{ return height; };
+float scalarFieldCone::Angle()   const		{ return angle;  };
 void  scalarFieldCone::setCenter(const vec3 &c) { center = c; };
 void  scalarFieldCone::setNormal(const vec3 &n) { normal = n; };
-void  scalarFieldCone::setHeight(float h)		{ height = h; };
-void  scalarFieldCone::setAngle (float a)		{ angle  = a; };
+void  scalarFieldCone::setHeight(float h)	{ height = h; };
+void  scalarFieldCone::setAngle (float a)	{ angle  = a; };
 const scalarFieldCone::fieldType scalarFieldCone::eval(const vec3 &p) const {
 
 	vec3  x   = p - center;
@@ -124,11 +124,11 @@ const scalarFieldCone::fieldType scalarFieldCone::eval(const vec3 &p) const {
 scalarFieldCylinder::scalarFieldCylinder() {};
 scalarFieldCylinder::scalarFieldCylinder(const vec3 &c, const vec3 &n, float r, float h) : center(c), normal(n), radius(r), height(h) {};
 scalarFieldCylinder::~scalarFieldCylinder() {};
-vec3  scalarFieldCylinder::Center()  const			{ return center; };
-vec3  scalarFieldCylinder::Normal()  const			{ return normal; };
-float scalarFieldCylinder::Radius()  const			{ return radius; };
-void  scalarFieldCylinder::setCenter(const vec3 &c) { center = c; };
-void  scalarFieldCylinder::setNormal(const vec3 &n) { normal = n; };
+vec3  scalarFieldCylinder::Center()  const		{ return center; };
+vec3  scalarFieldCylinder::Normal()  const		{ return normal; };
+float scalarFieldCylinder::Radius()  const		{ return radius; };
+void  scalarFieldCylinder::setCenter(const vec3 &c)	{ center = c; };
+void  scalarFieldCylinder::setNormal(const vec3 &n) 	{ normal = n; };
 void  scalarFieldCylinder::setRadius(float r)		{ radius = r; };
 const scalarFieldCylinder::fieldType scalarFieldCylinder::eval(const vec3 &p) const {
 
@@ -144,8 +144,8 @@ const scalarFieldCylinder::fieldType scalarFieldCylinder::eval(const vec3 &p) co
 scalarFieldIcosahedron::scalarFieldIcosahedron() {};
 scalarFieldIcosahedron::scalarFieldIcosahedron(const vec3 &c) : center(c), T(2.6180339f) {};
 scalarFieldIcosahedron::~scalarFieldIcosahedron() {};
-vec3  scalarFieldIcosahedron::Center()		const		{ return center; };
-float scalarFieldIcosahedron::Thickness()	const		{ return T;		 };
+vec3  scalarFieldIcosahedron::Center()		const	{ return center; };
+float scalarFieldIcosahedron::Thickness()	const	{ return T;	 };
 void  scalarFieldIcosahedron::setCenter(const vec3 &c)	{ center = c;	 };
 const scalarFieldIcosahedron::fieldType scalarFieldIcosahedron::eval(const vec3 &p) const {
 
@@ -160,8 +160,8 @@ const scalarFieldIcosahedron::fieldType scalarFieldIcosahedron::eval(const vec3 
 scalarFieldStenier::scalarFieldStenier() {};
 scalarFieldStenier::scalarFieldStenier(const vec3 &c) : center(c) {};
 scalarFieldStenier::~scalarFieldStenier() {};
-vec3  scalarFieldStenier::Center()		const { return center; };
-void  scalarFieldStenier::setCenter(const vec3 &c) { center = c; };
+vec3  scalarFieldStenier::Center()		const 	{ return center; };
+void  scalarFieldStenier::setCenter(const vec3 &c) 	{ center = c; };
 const scalarFieldStenier::fieldType scalarFieldStenier::eval(const vec3 &p) const {
 
 	vec3  x = p - center;
@@ -176,10 +176,10 @@ const scalarFieldStenier::fieldType scalarFieldStenier::eval(const vec3 &p) cons
 scalarFieldPyroclasticSphere::scalarFieldPyroclasticSphere() {};
 scalarFieldPyroclasticSphere::scalarFieldPyroclasticSphere(const vec3 &c, float r) : center(c), radius(r) {};
 scalarFieldPyroclasticSphere::~scalarFieldPyroclasticSphere() {};
-vec3  scalarFieldPyroclasticSphere::Center() const { return center; };
-float scalarFieldPyroclasticSphere::Radius() const { return radius; };
-void  scalarFieldPyroclasticSphere::setCenter(const vec3 &c) { center = c; };
-void  scalarFieldPyroclasticSphere::setRadius(float r) { radius = r; };
+vec3  scalarFieldPyroclasticSphere::Center() 		const 	{ return center; };
+float scalarFieldPyroclasticSphere::Radius() 		const 	{ return radius; };
+void  scalarFieldPyroclasticSphere::setCenter(const vec3 &c) 	{ center = c; };
+void  scalarFieldPyroclasticSphere::setRadius(float r) 		{ radius = r; };
 const scalarFieldPyroclasticSphere::fieldType scalarFieldPyroclasticSphere::eval(const vec3 &p) const { 
 
 	// Get parameters
@@ -202,8 +202,8 @@ void  scalarFieldPyroclasticSphere::setNoiseParameters(const Noise_t& parameters
 scalarFieldNoise::scalarFieldNoise() {};
 scalarFieldNoise::scalarFieldNoise(const vec3 &c) : center(c) {};
 scalarFieldNoise::~scalarFieldNoise() {};
-vec3  scalarFieldNoise::Center() const { return center; };
-void  scalarFieldNoise::setCenter(const vec3 &c) { center = c; };
+vec3  scalarFieldNoise::Center() 		const 	{ return center; };
+void  scalarFieldNoise::setCenter(const vec3 &c) 	{ center = c; };
 const scalarFieldNoise::fieldType scalarFieldNoise::eval(const vec3 &p) const {
 
 	// Get parameters
