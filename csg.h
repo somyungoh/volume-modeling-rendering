@@ -81,7 +81,7 @@ public:
 
 private:
 	const fieldScalarPtr field;
-	const float			 h;
+	const float h;
 };
 
 
