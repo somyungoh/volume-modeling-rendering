@@ -11,14 +11,15 @@
 
 // constructors
 camera::camera() {};
-camera::camera(const vec3 &o, const vec3 &v, const vec3 &up, float fov, float aRatio) : origin(o), view(v), up(up), right(glm::cross(v, up)), fov(fov), aspectRatio(aRatio) {};
+camera::camera(const vec3 &o, const vec3 &v, const vec3 &up, float fov, float aRatio) 
+	: origin(o), view(v), up(up), right(glm::cross(v, up)), fov(fov), aspectRatio(aRatio) {};
 camera::~camera() {};
 
 // getters
-vec3 camera::Origin() const				{ return origin; };
-void camera::moveIn(float ds)   		{ origin = origin + normalize(vec3(0, 0, 0) - origin)*ds; };
-void camera::moveOut(float ds)			{ origin = origin - normalize(vec3(0, 0, 0) - origin)*ds; };
-void camera::rotate(float da)			{ vec3 a(0, 1, 0); origin = rodriguesRotation(origin, a, da); right = rodriguesRotation(right, a, da); view = rodriguesRotation(view, a, da); };
+vec3 camera::Origin() const		{ return origin; };
+void camera::moveIn(float ds)   	{ origin = origin + normalize(vec3(0, 0, 0) - origin)*ds; };
+void camera::moveOut(float ds)		{ origin = origin - normalize(vec3(0, 0, 0) - origin)*ds; };
+void camera::rotate(float da)		{ vec3 a(0, 1, 0); origin = rodriguesRotation(origin, a, da); right = rodriguesRotation(right, a, da); view = rodriguesRotation(view, a, da); };
 void camera::moveTo(const vec3 &newO)	{ origin = newO; };
 
 // methods
