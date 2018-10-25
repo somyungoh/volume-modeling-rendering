@@ -12,7 +12,7 @@
 
 
 // ************************************ //
-//		define field algebra classes	//
+//  define field algebra classes  	//
 // ************************************ //
 
 // scalar add [f = f1 + f2]
@@ -127,7 +127,7 @@ const matrixFieldMultiply::fieldType matrixFieldMultiply::eval(const vec3 &p) co
 
 
 // *****************************//
-//		operator overloading	//
+//		operator overloading      //
 // **************************** //
 
 // scalar fields
