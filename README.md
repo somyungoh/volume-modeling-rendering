@@ -1,5 +1,8 @@
 # Volumetirc Modeling and Rendering
 
+This project is a coursework of Special Topics:Volume Modeling and Rendering(VIZA 689), Texas A&M University.
+
+
 Various volume modeling and rendering implementation including:
 
 - Implicit Shapes
