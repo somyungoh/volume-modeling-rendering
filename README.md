@@ -20,6 +20,6 @@ Various volume modeling and rendering implementation including:
 Pyroclastic Sphere
 <img src="https://user-images.githubusercontent.com/44325719/48664379-5eec3380-ea63-11e8-839e-26bf265decd6.jpg" width="500">
 WISP
-<img src="https://user-images.githubusercontent.com/44325719/48664459-55170000-ea64-11e8-9dc2-6876635dbde7.jpg" width="500">
+<img src="https://user-images.githubusercontent.com/44325719/48784732-e2e32d00-eca8-11e8-9839-ef9001649797.jpg" width="500">
 Gridlessly Advected Stanford Bunny
 
